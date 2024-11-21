@@ -23,8 +23,8 @@ public class ProductStatus {
     @Column(name = "status_name")
     private String statusName;
 
-    @OneToMany(mappedBy = "productStatus")
-    @JsonIgnore
-    private Set<Product> products;
+//    @OneToMany(mappedBy = "productStatus")
+//    @JsonIgnore
+//    private Set<Product> products;
 
 }

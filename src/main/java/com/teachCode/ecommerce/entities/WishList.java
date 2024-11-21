@@ -27,10 +27,10 @@ public class WishList {
 //    private User userId;
 
 
-    @OneToOne
-    @JoinColumn(name = "product_id")
-    @JsonIgnore
-    private Product product;
+//    @OneToOne
+//    @JoinColumn(name = "product_id")
+//    @JsonIgnore
+//    private Product product;
 
 //    @Override
 //    public boolean equals(Object o) {

@@ -37,23 +37,23 @@ public class Product {
     @Column(name = "units_in_stock")
     private Integer unitsInStock;
 
-    @Column(name = "date_created")
-    private Instant dateCreated;
+//    @Column(name = "date_created")
+//    private Instant dateCreated;
+//
+//    @Column(name = "last_updated")
+//    private Instant lastUpdated;
 
-    @Column(name = "last_updated")
-    private Instant lastUpdated;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "product_status_id", nullable = false)
-    private ProductStatus productStatus;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "category_id", nullable = false)
-    private ProductCategory category;
-
-    @OneToOne(mappedBy = "product")
-    @JsonIgnore
-    private WishList wishList;
+//    @ManyToOne(fetch = FetchType.EAGER)
+//    @JoinColumn(name = "product_status_id", nullable = false)
+//    private ProductStatus productStatus;
+//
+//    @ManyToOne(fetch = FetchType.EAGER)
+//    @JoinColumn(name = "category_id", nullable = false)
+//    private ProductCategory category;
+//
+//    @OneToOne(mappedBy = "product")
+//    @JsonIgnore
+//    private WishList wishList;
 
     //    @Override
 //    public final boolean equals(Object o) {

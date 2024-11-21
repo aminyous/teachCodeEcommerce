@@ -26,9 +26,9 @@ public class ProductCategory {
     private String categoryName;
 
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "category")
-    @JsonIgnore
-    private Set<Product> products;
+//    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "category")
+//    @JsonIgnore
+//    private Set<Product> products;
 
 
 
