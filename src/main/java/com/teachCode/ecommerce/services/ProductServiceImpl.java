@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductServiceImpl implements ProductService{
@@ -20,11 +21,12 @@ public class ProductServiceImpl implements ProductService{
 
 
     @Override
-    public ProductDTO getProductById(Long id) {
+    public Optional<Product> getProductById(Long id) {
+       // Optional<Product> product =  productRepository.findById(id);
+        return productRepository.findById(id);
+        //ProductDTO productDTO = new ProductDTO();
+        //return productDTO.productMapper(product);
 
-        Product product =  productRepository.findById(id).orElse(null);
-        ProductDTO productDTO = new ProductDTO();
-        return productDTO.productMapper(product);
 
     }
 

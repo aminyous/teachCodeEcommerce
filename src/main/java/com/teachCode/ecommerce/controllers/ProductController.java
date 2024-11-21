@@ -3,6 +3,7 @@ package com.teachCode.ecommerce.controllers;
 
 import com.teachCode.ecommerce.dto.ProductDTO;
 import com.teachCode.ecommerce.entities.Product;
+import com.teachCode.ecommerce.exceptions.ProductNotFoundException;
 import com.teachCode.ecommerce.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,13 +24,15 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ProductDTO> getProductById(@PathVariable Long id){
-        ProductDTO productDTO = productService.getProductById(id);
+    public ResponseEntity<Product> getProductById(@PathVariable Long id){
+        // Product product = productService.getProductById(id);
 
-            return new ResponseEntity<>(productDTO, HttpStatus.OK);
+            //return new ResponseEntity<>(product, HttpStatus.OK);
 
+        Product product = productService.getProductById(id).
+                orElseThrow(() -> new ProductNotFoundException("Product not found with id: " + id));
+        return ResponseEntity.ok(product);
         }
-
 
 
     @GetMapping
