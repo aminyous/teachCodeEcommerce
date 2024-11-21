@@ -1,5 +1,6 @@
 package com.teachCode.ecommerce.services;
 
+import com.teachCode.ecommerce.dto.ProductDTO;
 import com.teachCode.ecommerce.entities.Product;
 import com.teachCode.ecommerce.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +20,12 @@ public class ProductServiceImpl implements ProductService{
 
 
     @Override
-    public Product getProductById(Long id) {
-        return productRepository.findById(id).orElse(null);
+    public ProductDTO getProductById(Long id) {
+
+        Product product =  productRepository.findById(id).orElse(null);
+        ProductDTO productDTO = new ProductDTO();
+        return productDTO.productMapper(product);
+
     }
 
     @Override

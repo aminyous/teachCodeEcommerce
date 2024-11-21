@@ -1,6 +1,7 @@
 package com.teachCode.ecommerce.controllers;
 
 
+import com.teachCode.ecommerce.dto.ProductDTO;
 import com.teachCode.ecommerce.entities.Product;
 import com.teachCode.ecommerce.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,17 +23,14 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Product> getProductById(@PathVariable Long id){
-        Product product = productService.getProductById(id);
-        if (product != null){
-            return new ResponseEntity<>(product, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    public ResponseEntity<ProductDTO> getProductById(@PathVariable Long id){
+        ProductDTO productDTO = productService.getProductById(id);
+
+            return new ResponseEntity<>(productDTO, HttpStatus.OK);
+
         }
 
 
-
-    }
 
     @GetMapping
     ResponseEntity<List<Product>> getAllProducts(){
