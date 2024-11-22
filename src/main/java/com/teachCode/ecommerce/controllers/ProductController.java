@@ -1,8 +1,6 @@
 package com.teachCode.ecommerce.controllers;
 
 
-import com.teachCode.ecommerce.dto.ProductDTO;
-import com.teachCode.ecommerce.entities.ErrorResponse;
 import com.teachCode.ecommerce.entities.Product;
 import com.teachCode.ecommerce.exceptions.ProductNotFoundException;
 import com.teachCode.ecommerce.services.ProductService;
@@ -11,7 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -30,14 +27,11 @@ public class ProductController {
         // Product product = productService.getProductById(id);
 
         //return new ResponseEntity<>(product, HttpStatus.OK);
-        try {
+
             Product product = productService.getProductById(id).
                     orElseThrow(() -> new ProductNotFoundException("Product not found with id: " + id));
             return ResponseEntity.ok(product);
-        } catch (ProductNotFoundException e) {
-            ErrorResponse productNotFound = new ErrorResponse(LocalDateTime.now(), e.getMessage(), "Product not found");
-            return new ResponseEntity<>(productNotFound, HttpStatus.NOT_FOUND);
-        }
+
 
     }
 
@@ -53,5 +47,7 @@ public class ProductController {
         Product savedProduct = productService.addProduct(product);
         return ResponseEntity.ok(savedProduct);
     }
+
+
 
 }

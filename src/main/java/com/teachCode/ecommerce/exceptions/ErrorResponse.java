@@ -1,4 +1,4 @@
-package com.teachCode.ecommerce.entities;
+package com.teachCode.ecommerce.exceptions;
 
 import java.time.LocalDateTime;
 
