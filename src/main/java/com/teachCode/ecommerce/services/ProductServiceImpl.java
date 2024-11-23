@@ -22,22 +22,32 @@ public class ProductServiceImpl implements ProductService{
     }
 
 
-    @Override
-    public Optional<Product> getProductById(Long id) {
-       // Optional<Product> product =  productRepository.findById(id);
-        return productRepository.findById(id);
-        //ProductDTO productDTO = new ProductDTO();
-        //return productDTO.productMapper(product);
+//    @Override
+//    public Optional<Product> getProductById(Long id) {
+//       // Optional<Product> product =  productRepository.findById(id);
+//        return productRepository.findById(id);
+//        //ProductDTO productDTO = new ProductDTO();
+//        //return productDTO.productMapper(product);
+//    }
 
+    @Override
+    public ProductDTO getProductById(Long id) {
+        Optional<Product> product =  productRepository.findById(id);
+        if (product.isEmpty()){
+            throw new ProductNotFoundException("Product with Id" + id + " is not found");
+        }
+        //return productRepository.findById(id).get();
+        ProductDTO productDTO = new ProductDTO();
+        return productDTO.productMapper(product.get());
 
     }
 
     @Override
     public List<Product> getAllProducts() {
 
-        if (productRepository.findAll().size() < 10){
-            throw new ProductNotFoundException("List is less than 10");
-        }
+//        if (productRepository.findAll().size() < 1){
+//            throw new ProductNotFoundException("List is less than 10");
+//        }
         return productRepository.findAll();
     }
 

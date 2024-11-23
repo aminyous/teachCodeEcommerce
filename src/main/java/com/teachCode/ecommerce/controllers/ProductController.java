@@ -1,6 +1,7 @@
 package com.teachCode.ecommerce.controllers;
 
 
+import com.teachCode.ecommerce.dto.ProductDTO;
 import com.teachCode.ecommerce.entities.Product;
 import com.teachCode.ecommerce.exceptions.ProductNotFoundException;
 import com.teachCode.ecommerce.services.ProductService;
@@ -22,15 +23,28 @@ public class ProductController {
         this.productService = productService;
     }
 
+//    @GetMapping("/{id}")
+//    public ResponseEntity<?> getProductById(@PathVariable Long id) {
+//        // Product product = productService.getProductById(id);
+//
+//        //return new ResponseEntity<>(product, HttpStatus.OK);
+//
+//            Product product = productService.getProductById(id).
+//                    orElseThrow(() -> new ProductNotFoundException("Product not found with id: " + id));
+//            return ResponseEntity.ok(product);
+//
+//
+//    }
+
+
     @GetMapping("/{id}")
-    public ResponseEntity<?> getProductById(@PathVariable Long id) {
+    public ResponseEntity<Object> getProductById(@PathVariable Long id) {
         // Product product = productService.getProductById(id);
 
         //return new ResponseEntity<>(product, HttpStatus.OK);
 
-            Product product = productService.getProductById(id).
-                    orElseThrow(() -> new ProductNotFoundException("Product not found with id: " + id));
-            return ResponseEntity.ok(product);
+        ProductDTO product = productService.getProductById(id);
+        return ResponseEntity.ok(product);
 
 
     }
