@@ -10,6 +10,7 @@ import java.math.BigDecimal;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Entity
 @Table(name = "cart_items")
 public class CartItems {
@@ -20,7 +21,7 @@ public class CartItems {
     private Long id;
 
     @Column(name = "product_id")
-    private Long productId;
+    private String productId;
 
     @Column(name = "product_img")
     private String productImg;
@@ -29,16 +30,16 @@ public class CartItems {
     private String productName;
 
     @Column(name = "product_price")
-    private BigDecimal productPrice;
+    private int productPrice;
 
     @Column(name = "product_quantity")
-    private Integer productQuantity;
+    private int productQuantity;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "cart_id", nullable = false)
     private Cart cart;
 
-    public CartItems(Long id, String productName, Long productId, String productImg, int productQuantity, BigDecimal productPrice) {
+    public CartItems(Long id, String productName, String productId, String productImg, int productQuantity, int productPrice) {
         this.id = id;
         this.productName = productName;
         this.productId = productId;

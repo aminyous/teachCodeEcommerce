@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Getter
@@ -12,6 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Builder
 @Table(name = "cart")
 public class Cart {
 
@@ -26,10 +28,10 @@ public class Cart {
 
 
     @Column(name = "product_total_price")
-    private Integer productTotalPrice;
+    private int productTotalPrice;
 
     @Column(name = "product_total_quantity")
-    private Integer productTotalQuantity;
+    private int productTotalQuantity;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "cart")
     @JsonIgnore
