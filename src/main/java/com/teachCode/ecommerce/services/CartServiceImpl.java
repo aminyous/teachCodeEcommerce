@@ -132,3 +132,11 @@ public class CartServiceImpl implements CartService{
         log.info("Product with id " + productId + " removed from cart for user " + userId);
     }
 }
+
+//{
+//        return notificationRepository.findByIdAndByAll(id).orElse(Collections.emptyList()).stream()
+//				.map(n -> DtoNotification.builder().userId(n.getUserId()).datePosted(n.getDatePosted())
+//        .message(n.getMessage()).status(n.isStatus()).build())
+//        .collect(Collectors.toList());
+//        }
+

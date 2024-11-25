@@ -28,6 +28,7 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
 
     @Override
     public List<ProductCategory> getProductCategoryList() {
+
         return productCategoryRepository.findAll();
     }
 
@@ -46,13 +47,11 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
     public ProductCategory updateProductCategory(Long id, ProductCategory productCategory) {
 
         Optional<ProductCategory> productCategoryReturned = productCategoryRepository.findById(id);
-
-        if (productCategoryReturned.isPresent()) {
-            productCategoryReturned.map(cat -> {
-                cat.setCategoryName(productCategory.getCategoryName());
-                return productCategoryRepository.save(cat);
-            });
-
+        if (productCategoryReturned.isPresent()){
+            ProductCategory pro = productCategoryReturned.get();
+            pro.setCategoryName(productCategory.getCategoryName());
+            productCategoryRepository.save(pro);
+            return pro;
         }
         return null;
     }
@@ -68,7 +67,5 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
         } else {
             return "Not Found";
         }
-
-
     }
 }
