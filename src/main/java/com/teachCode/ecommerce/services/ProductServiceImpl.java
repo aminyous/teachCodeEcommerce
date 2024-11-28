@@ -53,7 +53,7 @@ public class ProductServiceImpl implements ProductService{
 
     @Override
     public Product addProduct(Product product) {
-
+        System.out.println("Product service created");
         return productRepository.save(product);
     }
 }

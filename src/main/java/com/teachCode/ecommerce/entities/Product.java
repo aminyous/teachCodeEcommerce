@@ -26,7 +26,7 @@ public class Product {
 
     private String description;
 
-    @Column(name = "unit_price", precision = 13, scale = 2)
+    @Column(name = "unit_price", precision = 2, scale = 2)
     private BigDecimal unitPrice;
 
     @Column(name = "image_url")
