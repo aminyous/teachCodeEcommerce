@@ -23,8 +23,8 @@ public class WishList {
     @SequenceGenerator(name = "wishlist_seq", sequenceName = "wishlist_seq")
     private Long id;
 
-//    @Column(name = "user_id", nullable = false)
-//    private User userId;
+    @Column(name = "user_id", nullable = false)
+    private Long userId;
 
 
     @OneToOne
@@ -32,18 +32,18 @@ public class WishList {
     @JsonIgnore
     private Product product;
 
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (!(o instanceof WishList wishList)) return false;
-//        return Objects.equals(getId(), wishList.getId()) && Objects.equals(getUserId(),
-//                wishList.getUserId()) && Objects.equals(getProduct(), wishList.getProduct());
-//    }
-//
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(getId(), getUserId(), getProduct());
-//    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof WishList wishList)) return false;
+        return Objects.equals(getId(), wishList.getId()) && Objects.equals(getUserId(),
+                wishList.getUserId()) && Objects.equals(getProduct(), wishList.getProduct());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getUserId(), getProduct());
+    }
 
 
 
