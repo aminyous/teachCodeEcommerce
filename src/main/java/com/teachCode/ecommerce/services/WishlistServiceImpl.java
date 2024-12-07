@@ -21,22 +21,22 @@ public class WishlistServiceImpl implements WishlistService {
     ProductRepository productRepository;
     @Override
     public String addProductToWishListByUser(WishListDto wishListDto) {
-        Optional<WishList> optionalWishList = wishListRepository.findByUserId(wishListDto.getUserId());
-        Product product;
-        WishList wishList;
-        if (optionalWishList.isPresent()){
-            wishList = optionalWishList.get();
-            Optional<Product> optionalProduct = productRepository.findById(wishListDto.getProductId());
-            if (optionalProduct.isPresent()){
-                product = optionalProduct.get();
-                if (Objects.equals(wishListDto.getProductId(), product.getId())){
-                    return "Product already exists";
-                } else {
-                    wishList.setProduct(product);
-                }
-            }
-
-        }
+//        Optional<WishList> optionalWishList = wishListRepository.findByUserId(wishListDto.getUserId());
+//        Product product;
+//        WishList wishList;
+//        if (optionalWishList.isPresent()){
+//            wishList = optionalWishList.get();
+//            Optional<Product> optionalProduct = productRepository.findById(wishListDto.getProductId());
+//            if (optionalProduct.isPresent()){
+//                product = optionalProduct.get();
+//                if (Objects.equals(wishListDto.getProductId(), product.getId())){
+//                    return "Product already exists";
+//                } else {
+//                    wishList.setProduct(product);
+//                }
+//            }
+//
+//        }
         return null;
     }
 

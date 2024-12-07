@@ -13,4 +13,5 @@ public interface ProductService {
     Product createProduct(Product product);
 
     Page<Product> getProductByStatusId(Long id, int page, int size);
+    Page<Product> searchProductByName(String name, int page, int size);
 }

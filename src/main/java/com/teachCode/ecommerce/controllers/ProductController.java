@@ -43,4 +43,11 @@ public class ProductController {
         return ResponseEntity.status(HttpStatus.OK).body(productsService.getProductByStatusId(id, page, size));
     }
 
+    @GetMapping("/search/{name}/{page}/{size}")
+    public ResponseEntity<Page<Product>> searchProductByName(@PathVariable("name") String name,
+                                                             @PathVariable("page") int page,
+                                                             @PathVariable("size") int size) {
+        return ResponseEntity.status(HttpStatus.OK).body(productsService.searchProductByName(name, page, size));
+    }
+
 }
